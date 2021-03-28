@@ -1,0 +1,157 @@
+body {
+    padding: 10px;
+}
+
+img {
+    background-image:url('noimage.jpg');
+}
+#mainheader {
+    color: black;
+    text-decoration: none;
+}
+
+.border-radius {
+    border-radius: 3px;
+}
+
+.border-radius:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.separator {
+    width: 100%;
+    height: 10px;
+    background-color: white;
+}
+
+.font {
+    font-family: Arial;
+    font-size: 22px;
+    color: rgb(170, 170, 170);
+}
+
+.font-smaller {
+    font-family: Arial;
+    font-size: 16px;
+    color: rgb(120, 120, 120);
+}
+
+.wrapper {
+    display: inline-block;
+    width: 70%;
+}
+
+.wrapper2 {
+    display: inline-block;
+    width: 40%;
+}
+
+.right {
+    float: right;
+}
+
+.image-stabilizer {
+    margin: 5px;
+    border-radius: 8px;
+    max-height: auto;
+}
+
+.image-stabilizer-l {
+    margin: 5px;
+    border-radius: 8px;
+    min-height: 400px;
+}
+
+.listing {
+    height: auto;
+}
+
+.description {
+    display: block;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.textarea_add {
+    width: 58%;
+    margin-left: 1%;
+}
+
+#textarea {
+    height: 187px;
+}
+
+.listingcontainer {
+    border-radius: 3px;
+    height: 500px;
+
+}
+
+.category {
+    position: absolute;
+    bottom: 0px;
+    width: 35%;
+
+
+}
+
+.top {
+    margin-top: 10px;
+}
+
+.buttonOff {
+    background-color: rgb(105, 117, 125);
+    color: white;
+    border-radius: 3px;
+}
+.buttonOn {
+    background-color: rgb(0, 112, 252);
+    color: white;
+    border-radius: 3px;
+}
+
+.leftbox {
+    float: left;
+    margin: 2%;
+    text-align: center;
+}
+
+.horizontal {
+    display: inline-block;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.stabilizer {
+   margin-bottom: 5px;
+}
+
+.commentarea {
+    width: 100%;
+    margin-top: 2%;
+}
+
+.commentinput {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+ 
+}
+
+h2 {
+    margin-bottom: 1%;
+}
+
+.space {
+    margin-top: 5px;
+}
+
+.categories {
+    width: 75%;
+    margin: auto; 
+}

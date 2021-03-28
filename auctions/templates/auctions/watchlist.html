@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h2>Your Watchlist</h2>
+
+{% for item in watchlistitems %}
+       
+        <a href="/listing/{{item.id}}">
+           
+            <div class="list-group-item border-radius listing">
+                <div class="wrapper">
+                    <p class="font"> {{ item.name }}</p>
+                    <p class="font-smaller"> Current price: <span style="color: black;">{{ item.startingbid }} $</span></p>
+                    
+                    <p class="font-smaller"> Product description: <span class="description" style="color: black;">{{ item.description }}</span> See more...</p>
+                    
+                    <p class="font-smaller">Category: <span style="color: black;">{{ item.category }}</span></p>
+                </div>
+                <img class="image-stabilizer right" src="{{item.image}}" alt="No picture provided" widh="300" height="200">
+            </div>  
+        </a>
+  
+            <div class="separator"></div>
+        {% endfor %}
+
+
+
+{% endblock %}

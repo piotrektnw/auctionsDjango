@@ -1,0 +1,50 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Add Item</h2>
+
+    {% for message in messages %}
+        <div  id="displaymsg" class="alert alert-dark" role="alert">
+            {{message}}
+        </div>
+    {% endfor %} 
+    
+    <div class="wrapper2">
+ 
+        <form action="{% url 'additem' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input class="form-control" required autofocus type="text" name="name" placeholder="Item name">
+            </div>
+            
+            <select required name="category" class="form-group" style="width: 100%;">
+                <option disabled selected value="">Category</option>
+                {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+
+            <div class="form-group">
+                <input class="form-control" type="number" step="0.01" name="startingbid" required placeholder="Starting bid">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="url" name="url" placeholder="Item image address" required autocomplete="none">
+            </div>
+     
+
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Add item" name="submit">
+            </div>
+        </div>
+            <div class="form-group right textarea_add ">
+                <textarea id="textarea"  class="form-control text" required type="text" maxlength="255" name="description">Item description (255 characters)</textarea>
+            </div>
+        </form>
+    
+
+
+{% endblock %}

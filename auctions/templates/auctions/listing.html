@@ -1,0 +1,103 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% for message in messages %}
+        <div  id="displaymsg" class="alert alert-dark " role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
+
+    {% if author and listingactive %}
+
+        <form action="/close/{{itemId}}" method="GET">
+            <button class="buttonOn stabilizer" value="{{itemId}}"> Close listing</button>
+        </form>
+
+    {% elif not listingactive and visitoriswinner %}
+
+        <p class="alert alert-dark ">Congratulations <strong>{{winnername}}</strong>! You have won this auction!</p>
+
+    {% elif not listingactive %}
+
+        <p class="alert alert-dark ">Listing closed. Winner:  <strong>{{winnername}}</strong></p>
+    
+    {% endif %}
+
+    <div id="listing" class="list-group-item listingcontainer">
+        <div class="wrapper2"> 
+            {% if user.is_authenticated %}  
+            <a href="/addtowatch/{{itemId}}">
+                {% if itemOnList %}
+               <button onclick="watchlist()" class="buttonOn" id="watchlistbtn" type="submit">Watchlist</button>
+                {% else %}
+                <button onclick="watchlist()" class="buttonOff" id="watchlistbtn" type="submit">Watchlist</button>
+                {% endif %}
+            </a>    
+            {% endif %}
+                
+
+            <p class="font top"> {{ name }}</p>
+            <p class="font-smaller"> Product description: <span  style="color: black;">{{description}}</span></p>
+            <div class="form-group category">
+
+                <form action="{% url 'categories' %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="leftbox"><button class="btn btn-primary" name='category' value="{{category}}">   Category: {{ category}}</div>
+                </form>
+
+                    {% if user.is_authenticated %}
+                        <form action="/bid" method="POST">
+                            {% csrf_token %}     
+                            <div class="leftbox">{{NewBid.bidprop}}</div>  
+                            {{NewBid.productid}}
+                            <div class="leftbox"><input class="btn btn-primary" value="Bid" type="submit" name="submit"></div>           
+                        </form>
+                        
+                    {% endif %} 
+                   
+                </div>   
+               
+            </div>
+        
+        <img class="image-stabilizer-l right" src="{{image}}" alt='No picture provided' height="150">
+
+         
+    </div>
+
+    <!-- Comments  section -->
+
+    {% if user.is_authenticated and listingactive %}
+    <div class="commentarea">
+        <h2>See what others think about this product!</h2>
+  
+        <form action="/comments/{{itemId}}" method="GET" style="margin-bottom: 5px;">
+            <div class="form-group">
+                <label>Your comment</label>
+                <input type="text" name="comment" class="form-control"  required placeholder="Share your thoughts about this product!">      
+
+            <button class="btn btn-primary space" name="click">Add</button>
+        </div>
+        </form> 
+
+    {% endif %} 
+
+    {% if listingactive %}
+
+    {% for comment  in comments.all|dictsortreversed:"id" %}
+
+        <div class="list-group-item border-radius listing">
+            <div class="wrapper">
+                <p class="font top"> {{ comment.user_id }}</p>
+                <p> {{ comment.content }}</p>
+                <p> {{ comment.datetime }}</p>
+            </div>   
+        </div>
+    <div class="separator"></div>
+
+    {% endfor %}
+          
+    {% endif %}       
+    </div>
+{% endblock %}

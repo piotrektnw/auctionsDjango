@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+
+
+{% block body %}
+
+    <h2>Browse categories</h2>
+ 
+    <form action="{% url 'categories' %}" method="POST">  
+        {% csrf_token %}
+    
+        <button class="btn btn-secondary btn-lg btn-block categories" name="category" value="Pants"> Pants</button>
+        <button class="btn btn-secondary btn-lg btn-block categories" name="category" value="Shirts"> Shirts</button>
+        <button class="btn btn-secondary btn-lg btn-block categories" name="category" value="Socks"> Socks</button>
+        <button class="btn btn-secondary btn-lg btn-block categories" name="category" value="Shoes"> Shoes</button>
+        <button class="btn btn-secondary btn-lg btn-block categories" name="category" value="Jackets"> Jackets</button>
+
+    </form>
+
+{% endblock %}
